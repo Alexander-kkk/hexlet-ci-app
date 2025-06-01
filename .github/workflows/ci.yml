@@ -1,0 +1,11 @@
+name: CI Tests
+on: [push, pull_request]  # Запуск при пуше или PR
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4  # Клонирует репозиторий
+      - run: make setup            # Установка зависимостей
+      - run: make lint             # Проверка линтером
+      - run: make test             # Запуск тестов
